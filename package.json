@@ -3,7 +3,14 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "sst dev",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "db:init": "sequelize-cli init",
+    "db:model": "sequelize-cli model:generate",
+    "db:migrate": "sequelize-cli db:migrate",
+    "db:migrate:undo": "sequelize-cli db:migrate:undo:all",
+    "db:seed": "sequelize-cli db:seed:all",
+    "db:seed:undo": "sequelize-cli db:seed:undo:all",
+    "db:add": "sequelize-cli migration:generate --name"
   },
   "dependencies": {
     "@sequelize/mysql": "^7.0.0-alpha.45",

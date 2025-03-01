@@ -6,7 +6,8 @@
       "routes/*": ["src/routes/*"],
       "services/*": ["src/services/*"],
       "types/*": ["src/types/*"],
-      "database/*": ["src/database/*"]
+      "database/*": ["src/database/*"],
+      "api/*": ["src/api/*"]
     }
-  },
+  }
 }

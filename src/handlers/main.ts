@@ -1,15 +1,16 @@
 import { response } from 'utils/response';
 import { Sequelize } from 'sequelize-typescript';
-import { quote } from '../api/quote';
-import { validateRate } from 'src/api/validateRate';
+import { quote } from 'api/quote';
+import { validateRate } from 'api/validateRate';
 import { RequestEvent } from 'types/RequestEvent';
 import { Resource } from 'sst';
 import Product from 'database/models/Product';
 import Quote from 'database/models/Quote';
+import Rate from 'database/models/Rate';
 
 let db: Sequelize | null = null;
 
-const connectToDatabase = async (): Promise<Sequelize> => {
+const connectToDatabase = async () => {
   if (db) {
     return db;
   }
@@ -29,8 +30,11 @@ const connectToDatabase = async (): Promise<Sequelize> => {
 
     Product.initialize(db);
     Quote.initialize(db);
+    Rate.initialize(db);
 
-    return db;
+    Product.associate({ Product, Quote, Rate });
+    Quote.associate({ Product, Quote, Rate });
+    Rate.associate({ Product, Quote, Rate });
   } catch (error) {
     console.error('Unable to connect to the database:', error);
     throw error;
@@ -39,13 +43,13 @@ const connectToDatabase = async (): Promise<Sequelize> => {
 
 export const handler = async (event: RequestEvent) => {
   try {
-    const sequelize = await connectToDatabase();
-    
+    await connectToDatabase();
+
     switch (event.path) {
       case '/quote':
-        return await quote(event, sequelize);
+        return await quote(event.body);
       case '/validate':
-        return await validateRate(event);
+        return await validateRate(event.body);
       default:
         return response(404, { message: 'Route not found' });
     }

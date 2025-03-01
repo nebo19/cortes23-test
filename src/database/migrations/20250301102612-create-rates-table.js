@@ -3,24 +3,28 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('quotes', {
-      quote_id: {
+    await queryInterface.createTable('rates', {
+      rate_id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
         allowNull: false,
       },
-      product_id: {
-        type: Sequelize.STRING(50),
+      quote_id: {
+        type: Sequelize.UUID,
         allowNull: false,
         references: {
-          model: 'products',
-          key: 'product_id',
+          model: 'quotes',
+          key: 'quote_id',
         },
         onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT',
+        onDelete: 'CASCADE',
       },
-      input_parameters: {
+      rate_class: {
+        type: Sequelize.STRING(50),
+        allowNull: false,
+      },
+      rate_options: {
         type: Sequelize.JSON,
         allowNull: false,
       },
@@ -37,9 +41,11 @@ module.exports = {
         ),
       },
     });
+
+    await queryInterface.addIndex('rates', ['quote_id']);
   },
 
   async down(queryInterface) {
-    await queryInterface.dropTable('quotes');
+    await queryInterface.dropTable('rates');
   },
 };
