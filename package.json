@@ -1,0 +1,24 @@
+{
+  "name": "cortes23",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "sst dev",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@sequelize/mysql": "^7.0.0-alpha.45",
+    "dotenv": "^16.4.7",
+    "kysely": "^0.27.5",
+    "pg-hstore": "^2.3.4",
+    "sequelize-typescript": "^2.1.6",
+    "sst": "^3.9.15",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@tsconfig/node18": "^18.2.4",
+    "@types/node": "^22.13.5",
+    "prettier": "^3.0.0",
+    "sequelize-cli": "^6.6.2",
+    "typescript": "^5.7.3"
+  }
+}
