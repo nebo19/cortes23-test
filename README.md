@@ -21,7 +21,7 @@ npm install
 Create a `.env` file in the root directory with the following variables:
 
 ```
-DB_HOST=                           -- leave empty will add this later when sst deploys the app
+DB_HOST=                           -- leave empty for now, you will add this later when sst finishes deploy
 DB_USERNAME=your_database_username
 DB_PASSWORD=your_database_password
 DB_NAME=your_database_name
