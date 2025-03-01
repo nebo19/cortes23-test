@@ -10,7 +10,8 @@
     "db:migrate:undo": "sequelize-cli db:migrate:undo:all",
     "db:seed": "sequelize-cli db:seed:all",
     "db:seed:undo": "sequelize-cli db:seed:undo:all",
-    "db:add": "sequelize-cli migration:generate --name"
+    "db:add": "sequelize-cli migration:generate --name",
+    "test": "vitest"
   },
   "dependencies": {
     "@sequelize/mysql": "^7.0.0-alpha.45",
@@ -26,6 +27,7 @@
     "@types/node": "^22.13.5",
     "prettier": "^3.0.0",
     "sequelize-cli": "^6.6.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.7"
   }
 }

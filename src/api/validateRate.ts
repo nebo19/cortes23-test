@@ -38,7 +38,7 @@ export const validateRate = async (payload: string) => {
   });
 
   if (!rate) {
-    return response(404, { message: 'Rate not valid' });
+    return response(400, { message: 'Rate not valid' });
   }
 
   return response(200, { message: 'Success' });
