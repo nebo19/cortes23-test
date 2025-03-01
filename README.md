@@ -90,6 +90,15 @@ npm run db:seed
 
 This section provides details about the available API endpoints, request/response formats, and examples.
 
+### Structure
+
+There is one API Gateway with 2 routes:
+
+- `/quote` - For generating insurance quotes
+- `/validate` - For validating premium rates
+
+A single Lambda function is triggered by both routes and handles the requests appropriately based on the endpoint path.
+
 ### Base URL
 
 When deployed, your API will be accessible at the URL provided by AWS API Gateway. During local development with SST, the API URL will be displayed in the console.
