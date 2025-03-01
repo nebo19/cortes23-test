@@ -15,17 +15,18 @@ const connectToDatabase = async () => {
     return db;
   }
 
-  db = new Sequelize({
-    username: Resource.Database.username,
-    password: Resource.Database.password,
-    database: Resource.Database.database,
-    host: Resource.Database.host,
-    port: Resource.Database.port,
-    dialect: 'mysql',
-    dialectModule: require('mysql2'),
-  });
-
   try {
+    db = new Sequelize({
+      username: Resource.Database.username,
+      password: Resource.Database.password,
+      database: Resource.Database.database,
+      host: Resource.Database.host,
+      port: Resource.Database.port,
+      dialect: 'mysql',
+      dialectModule: require('mysql2'),
+      logging: false,
+    });
+
     await db.authenticate();
     console.log('Database connection established successfully.');
 
@@ -38,6 +39,7 @@ const connectToDatabase = async () => {
     Rate.associate({ Product, Quote, Rate });
   } catch (error) {
     console.error('Unable to connect to the database:', error);
+    db = null;
     throw error;
   }
 };
