@@ -70,13 +70,13 @@ Once the tunnel is active, run the following commands to set up your database:
 1. Run migrations:
 
 ```bash
-npm run sequelize:migrate
+npm run db:migrate
 ```
 
 2. Seed the database with test data:
 
 ```bash
-npm run sequelize:seed
+npm run db:seed
 ```
 
 **Note:** If any of these commands timeout, you may need to restart the SST tunnel by running `sst tunnel` again.
