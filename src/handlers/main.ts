@@ -22,6 +22,7 @@ const connectToDatabase = async () => {
     host: Resource.Database.host,
     port: Resource.Database.port,
     dialect: 'mysql',
+    dialectModule: require('mysql2'),
   });
 
   try {

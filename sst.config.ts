@@ -28,7 +28,6 @@ export default $config({
     const mainHandler = new sst.aws.Function('MainHandler', {
       handler: './src/handlers/main.handler',
       link: [database],
-      timeout: '60 seconds',
       vpc,
     });
 
