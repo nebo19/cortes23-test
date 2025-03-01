@@ -4,7 +4,6 @@
   "scripts": {
     "dev": "sst dev",
     "format": "prettier --write .",
-    "db:init": "sequelize-cli init",
     "db:model": "sequelize-cli model:generate",
     "db:migrate": "sequelize-cli db:migrate",
     "db:migrate:undo": "sequelize-cli db:migrate:undo:all",
