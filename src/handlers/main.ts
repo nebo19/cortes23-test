@@ -24,6 +24,7 @@ const connectToDatabase = async () => {
       port: Resource.Database.port,
       dialect: 'mysql',
       dialectModule: require('mysql2'),
+      dialectOptions: { connectTimeout: 30000 },
       logging: false,
     });
 
