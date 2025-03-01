@@ -21,13 +21,21 @@ npm install
 Create a `.env` file in the root directory with the following variables:
 
 ```
-DB_HOST=your_database_host
+DB_HOST=                           -- leave empty will add this later when sst deploys the app
 DB_USERNAME=your_database_username
 DB_PASSWORD=your_database_password
 DB_NAME=your_database_name
 ```
 
 ### 3. Deploy with SST
+
+Make sure first to have aws profile set. If you don't have it run:
+
+```bash
+aws configure
+```
+
+And fill in all the information needed.
 
 Deploy the application to AWS using SST:
 
@@ -75,7 +83,7 @@ npm run sequelize:seed
 
 ## Additional Resources
 
-- [SST Documentation](https://docs.sst.dev/)
+- [SST Documentation](https://sst.dev/docs/)
 - [Sequelize Documentation](https://sequelize.org/)
 
 ## API Documentation
@@ -101,16 +109,16 @@ Returns a quote based on the provided input parameters.
 ```json
 {
   "productId": "string",
-  "state": "string", // Optional
-  "sex": "string", // Optional
-  "dateOfBirth": "string", // Optional
-  "amount": "number", // Optional
-  "benefitType": "string", // Optional
-  "mode": "string", // Optional
-  "riders": "array", // Optional
-  "annualIncome": "number", // Optional
-  "smoker": "boolean", // Optional
-  "eliminationPeriod": "string" // Optional
+  "state": "string",
+  "sex": "string",
+  "dateOfBirth": "string",
+  "amount": "number",
+  "benefitType": "string",
+  "mode": "string",
+  "riders": "array",
+  "annualIncome": "number",
+  "smoker": "boolean",
+  "eliminationPeriod": "string"
 }
 ```
 
@@ -167,9 +175,9 @@ Validates if a selected premium rate is valid for a given rate class and coverag
 
 ```json
 {
-  "rateClass": "string", // Required: Rate class (e.g., "preferredPlus", "standard")
-  "coveragePeriod": "string", // Required: Coverage period (e.g., "term10", "term20", "2BP-30EP"...)
-  "selectedPremium": "number" // Required: The premium amount to validate
+  "rateClass": "string",
+  "coveragePeriod": "string",
+  "selectedPremium": "number"
 }
 ```
 
