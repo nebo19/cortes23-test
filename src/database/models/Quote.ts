@@ -1,31 +1,10 @@
 import { Model, DataTypes, Optional } from 'sequelize';
 import { Sequelize } from 'sequelize-typescript';
 
-interface BaseQuoteParams {
-  productId: string;
-  state: string;
-  sex: string;
-  dateOfBirth: string;
-  amount: number;
-  benefitType: string;
-  mode: string;
-  riders: string[];
-}
-
-interface TermLifeParams extends BaseQuoteParams {}
-
-interface DisabilityParams extends BaseQuoteParams {
-  annualIncome: number;
-  smoker: boolean;
-  eliminationPeriod: string;
-}
-
-type InputParameters = TermLifeParams | DisabilityParams;
-
 interface QuoteAttributes {
   quote_id: string;
   product_id: string;
-  input_parameters: InputParameters;
+  input_parameters: any;
   created_at: Date;
   updated_at: Date;
 }
@@ -39,7 +18,7 @@ class Quote
 {
   declare quote_id: string;
   declare product_id: string;
-  declare input_parameters: InputParameters;
+  declare input_parameters: any;
   declare created_at: Date;
   declare updated_at: Date;
 
